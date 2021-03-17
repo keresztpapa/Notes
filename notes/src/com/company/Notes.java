@@ -11,9 +11,7 @@ class Main extends JFrame implements ActionListener {
     static JButton button;
     static JLabel label;
 
-
-    JLabel labels[];
-    ArrayList<String> notes = new ArrayList<String>();
+    ArrayList<String> notes = new ArrayList<>();
 
     public static void main(String[] args)
     {
@@ -26,13 +24,13 @@ class Main extends JFrame implements ActionListener {
 
         Main main = new Main();
 
-        JPanel p = new JPanel();
+
 
         button.addActionListener(main);
 
         text = new JTextField(16);
 
-
+        JPanel p = new JPanel();
             p.add(text);
             p.add(button);
             p.add(label);
@@ -45,16 +43,24 @@ class Main extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e)
     {
         String s = e.getActionCommand();
+
         if (s.equals("submit")) {
+
             notes.add(text.getText());
-            JLabel labels[] = new JLabel[notes.size()];
+            JLabel[] labels;
+
+            labels = new JLabel[notes.size()];
+            JPanel panel = new JPanel();
+
 
             for (int i = 0; i<notes.size(); i++){
 
                 labels[i] = new JLabel(notes.get(i));
                 labels[i].setText(notes.get(i));
-                frame.add(labels[i]);
-                //System.out.println(notes.get(i));
+                panel.add(labels[i]);
+
+                frame.add(panel);
+                System.out.println(notes.get(i));
             }
 
             //label.setText(text.getText());
